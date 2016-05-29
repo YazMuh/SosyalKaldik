@@ -28,6 +28,7 @@ namespace SosyalKaldık.Controllers
             UserManager = userManager;
             SignInManager = signInManager;
         }
+        
 
         public ApplicationSignInManager SignInManager
         {
@@ -61,7 +62,15 @@ namespace SosyalKaldık.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-
+        public ActionResult Edit()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Edit(RegisterViewModel model )
+        {
+            return View();
+        }
         //
         // POST: /Account/Login
         [HttpPost]
