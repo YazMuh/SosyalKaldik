@@ -67,7 +67,7 @@ namespace SosyalKaldık.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Edit(RegisterViewModel model )
+        public ActionResult Edit(EditViewModel model )
         {
             return View(model);
         }
