@@ -9,7 +9,7 @@ namespace SosyalKaldık
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            int a = 0;
+           
         }
     }
 }
