@@ -176,8 +176,41 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ETKINLIK.cs">
+      <DependentUpon>SosyalKalEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\KATEGORI.cs">
+      <DependentUpon>SosyalKalEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KULLANICI.cs">
+      <DependentUpon>SosyalKalEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\SosyalKalEntityModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SosyalKalEntityModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SosyalKalEntityModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SosyalKalEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SosyalKalEntityModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SosyalKalEntityModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>SosyalKalEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>SosyalKalEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>SosyalKalEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -188,8 +221,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\SosyalKalEntityModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SosyalKalEntityModel.edmx</DependentUpon>
+      <LastGenOutput>SosyalKalEntityModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\SosyalKalEntityModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SosyalKalEntityModel.edmx</DependentUpon>
+      <LastGenOutput>SosyalKalEntityModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\SosyalKalEntityModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SosyalKalEntityModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\SosyalKalEntityModel.edmx.diagram">
+      <DependentUpon>SosyalKalEntityModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
