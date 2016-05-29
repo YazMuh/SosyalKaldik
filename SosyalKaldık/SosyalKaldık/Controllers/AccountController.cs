@@ -20,6 +20,7 @@ namespace SosyalKaldık.Controllers
 
         public AccountController()
         {
+            int ad = 0;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
