@@ -24,6 +24,8 @@ namespace SosyalKaldık.Models
         public string KUL_EMAIL { get; set; }
         public string KUL_PASSWORD { get; set; }
         public string KUL_TELEFON { get; set; }
+        public string KUL_ADI { get; set; }
+        public string KUL_SOYADI { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ETKINLIK> ETKINLIKs { get; set; }
