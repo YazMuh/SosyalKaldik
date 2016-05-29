@@ -5,6 +5,7 @@ namespace SosyalKaldık.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
+        int a = 0;
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
