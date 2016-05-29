@@ -66,6 +66,21 @@ namespace SosyalKaldık.Models
     public class RegisterViewModel
     {
         [Required]
+        
+        [Display(Name = "Adı")]
+        public string Adı { get; set; }
+
+        [Required]
+        
+        [Display(Name = "Soyadı")]
+        public string Soyadı { get; set; }
+
+        [Required]
+        
+        [Display(Name = "Telefon No")]
+        public string Tel { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

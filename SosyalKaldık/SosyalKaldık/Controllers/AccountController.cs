@@ -150,6 +150,14 @@ namespace SosyalKaldık.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            SosyalKalEntities1 a = new SosyalKalEntities1();
+            KULLANICI b = new KULLANICI();
+            b.KUL_EMAIL = model.Email;
+            b.KUL_PASSWORD = model.Password;
+            b.KUL_TELEFON = "5616";
+            a.KULLANICIs.Add(b);
+            a.SaveChanges();
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
