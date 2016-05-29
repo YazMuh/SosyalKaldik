@@ -69,7 +69,7 @@ namespace SosyalKaldık.Controllers
         [HttpPost]
         public ActionResult Edit(RegisterViewModel model )
         {
-            return View();
+            return View(model);
         }
         //
         // POST: /Account/Login
