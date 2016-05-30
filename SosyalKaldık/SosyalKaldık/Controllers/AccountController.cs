@@ -23,12 +23,12 @@ namespace SosyalKaldık.Controllers
             int ad = 0;
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
         }
-        
+
 
         public ApplicationSignInManager SignInManager
         {
@@ -36,9 +36,9 @@ namespace SosyalKaldık.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -67,8 +67,11 @@ namespace SosyalKaldık.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Edit(EditViewModel model )
+        public ActionResult Edit(EditViewModel model)
         {
+
+
+
             return View(model);
         }
         //
@@ -130,7 +133,7 @@ namespace SosyalKaldık.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -161,12 +164,17 @@ namespace SosyalKaldık.Controllers
         {
             SosyalKalEntities1 a = new SosyalKalEntities1();
             KULLANICI b = new KULLANICI();
+
             b.KUL_EMAIL = model.Email;
             b.KUL_PASSWORD = model.Password;
-            b.KUL_TELEFON = "5616";
+            b.KUL_TELEFON = model.Tel;
+            b.KUL_ADI = model.Adı;
+            b.KUL_SOYADI = model.Soyadı;
+
+
             a.KULLANICIs.Add(b);
             a.SaveChanges();
-
+             
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
