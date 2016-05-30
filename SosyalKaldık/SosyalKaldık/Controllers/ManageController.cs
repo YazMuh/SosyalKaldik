@@ -105,6 +105,18 @@ namespace SosyalKaldık.Controllers
         {
             return View();
         }
+        public ActionResult Edit()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Edit(EditViewModel model)
+        {
+
+
+
+            return View(model);
+        }
 
         //
         // POST: /Manage/AddPhoneNumber

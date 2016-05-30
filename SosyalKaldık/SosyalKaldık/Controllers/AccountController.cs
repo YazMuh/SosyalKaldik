@@ -62,18 +62,7 @@ namespace SosyalKaldık.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-        public ActionResult Edit()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Edit(EditViewModel model)
-        {
-
-
-
-            return View(model);
-        }
+      
         //
         // POST: /Account/Login
         [HttpPost]

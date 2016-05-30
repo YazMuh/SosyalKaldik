@@ -63,22 +63,7 @@ namespace SosyalKaldık.Models
         public bool RememberMe { get; set; }
     }
 
-    public class EditViewModel
-    {
-        [Required]
-        [Display(Name = "Adı")]
-        public string Adı { get; set; }
-
-        [Required]
-        [Display(Name = "Soyadı")]
-        public string Soyadı { get; set; }
-
-        [Required]
-
-        [Display(Name = "Telefon No")]
-        public string Tel { get; set; }
-    }
-
+ 
 
         public class RegisterViewModel
     {
