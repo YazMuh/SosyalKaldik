@@ -14,33 +14,45 @@
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
 
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new Dictionary<string, object>() { { "disabled", "true" } }))
+        </div>
+    </div>
+    
 
     <div class="form-group">
         @Html.LabelFor(m => m.Adı, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Adı, new { @class = "form-control" })
+            @Html.EditorFor(m => m.Adı, new { @class = "form-control" })
         </div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.Soyadı, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Soyadı, new { @class = "form-control" })
+            @Html.EditorFor(m => m.Soyadı, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Tel, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Tel, new { @class = "form-control" })
+            @Html.EditorFor(m => m.Tel, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Save" />
         </div>
     </div>
 
 }
 
+
+
+
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-
-
-
-

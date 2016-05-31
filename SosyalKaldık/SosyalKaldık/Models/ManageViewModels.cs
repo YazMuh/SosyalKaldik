@@ -15,6 +15,12 @@ namespace SosyalKaldık.Models
     }
     public class EditViewModel
     {
+       
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+
         [Required]
         [Display(Name = "Adı")]
         public string Adı { get; set; }
