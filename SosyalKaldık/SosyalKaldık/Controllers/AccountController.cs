@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using SosyalKaldık.Models;
+using System.Collections.Generic;
+using System;
 
 namespace SosyalKaldık.Controllers
 {
@@ -13,6 +15,41 @@ namespace SosyalKaldık.Controllers
         {
             
         }
+
+        [HttpPost]
+        public ActionResult EtkinlikEkle(EtkinlikModel model)
+        {
+            
+            SosyalKalEntities1 contex = new SosyalKalEntities1();
+            ETKINLIK etk = new ETKINLIK();
+            etk.ETK_ACIKLAMA = model.ETK_ACIKLAMA;
+            etk.ETK_BASLIK = model.ETK_BASLIK;
+            etk.ETK_ILCE = model.ETK_ILCE;
+            etk.ETK_SEHIR = model.ETK_SEHIR;
+            etk.KAT_ID = model.KAT_ID;
+            etk.ETK_TARIH_SAAT = 
+             Convert.ToDateTime(model.ETK_TARIH_SAAT);
+            etk.KUL_ID = ((KULLANICI)(Session["Uye"])).KUL_ID;
+            contex.ETKINLIKs.Add(etk);
+            contex.SaveChanges();
+            return RedirectToAction("Index","Home");
+        }
+        public ActionResult EtkinlikEkle()
+        {
+
+            EtkinlikModel model = new EtkinlikModel();
+            SosyalKalEntities1 contex = new SosyalKalEntities1();
+            List<KATEGORI> kategoriler = contex.KATEGORIs.ToList();
+            model.Kategoriler = (from j in kategoriler
+                              select new SelectListItem
+                              {
+                                  Text = j.KAT_ADI,
+                                  Value = j.KAT_ID.ToString()
+                              }).ToList();
+            model.Kategoriler.Insert(0, new SelectListItem { Text = "Seçiniz", Value = "" });
+            return View(model);
+        }
+
 
      
         //

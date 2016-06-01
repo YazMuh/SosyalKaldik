@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace SosyalKaldık.Models
 {
@@ -22,6 +23,31 @@ namespace SosyalKaldık.Models
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
         public string ReturnUrl { get; set; }
         public bool RememberMe { get; set; }
+    }
+
+    public class EtkinlikModel
+    {
+        public EtkinlikModel()
+        {
+            this.Kategoriler= new List<SelectListItem>();
+            Kategoriler.Add(new SelectListItem { Text = "Seçiniz", Value = "" });
+        }
+        
+        public int ETK_ID { get; set; }
+        [Display(Name = "Başlık")]
+        public string ETK_BASLIK { get; set; }
+        [Display(Name = "Açıklama")]
+        public string ETK_ACIKLAMA { get; set; }
+        [Display(Name = "Şehir")]
+        public string ETK_SEHIR { get; set; }
+        [Display(Name = "İlçe")]
+        public string ETK_ILCE { get; set; }
+        [Display(Name = "Tarih - Saat")]
+        public System.DateTime ETK_TARIH_SAAT { get; set; }
+        public int KUL_ID { get; set; }
+        public int KAT_ID { get; set; }
+        [Display(Name ="Kategori")]
+        public List<SelectListItem> Kategoriler = new List<SelectListItem>();
     }
 
     public class VerifyCodeViewModel
@@ -95,7 +121,7 @@ namespace SosyalKaldık.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -114,7 +140,7 @@ namespace SosyalKaldık.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

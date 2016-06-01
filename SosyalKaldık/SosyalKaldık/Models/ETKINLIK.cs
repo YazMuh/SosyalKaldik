@@ -19,7 +19,7 @@ namespace SosyalKaldık.Models
         public string ETK_ACIKLAMA { get; set; }
         public string ETK_SEHIR { get; set; }
         public string ETK_ILCE { get; set; }
-        public Nullable<System.DateTime> ETK_TARIH_SAAT { get; set; }
+        public System.DateTime ETK_TARIH_SAAT { get; set; }
         public int KUL_ID { get; set; }
         public int KAT_ID { get; set; }
     

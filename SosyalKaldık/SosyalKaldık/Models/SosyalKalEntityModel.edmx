@@ -14,7 +14,7 @@
           <Property Name="ETK_ACIKLAMA" Type="varchar" MaxLength="400" />
           <Property Name="ETK_SEHIR" Type="varchar" MaxLength="50" />
           <Property Name="ETK_ILCE" Type="varchar" MaxLength="50" />
-          <Property Name="ETK_TARIH_SAAT" Type="datetime" />
+          <Property Name="ETK_TARIH_SAAT" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="KUL_ID" Type="int" Nullable="false" />
           <Property Name="KAT_ID" Type="int" Nullable="false" />
         </EntityType>
@@ -128,7 +128,7 @@
           <Property Name="ETK_ACIKLAMA" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
           <Property Name="ETK_SEHIR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ETK_ILCE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ETK_TARIH_SAAT" Type="DateTime" Precision="3" />
+          <Property Name="ETK_TARIH_SAAT" Type="DateTime" Precision="7" Nullable="false" />
           <Property Name="KUL_ID" Type="Int32" Nullable="false" />
           <Property Name="KAT_ID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="KATEGORI" Relationship="Self.FK_ETKINLIK_KATEGORI" FromRole="ETKINLIK" ToRole="KATEGORI" />
