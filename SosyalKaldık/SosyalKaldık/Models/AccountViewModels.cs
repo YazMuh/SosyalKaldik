@@ -11,7 +11,10 @@ namespace SosyalKaldık.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
-
+    public class Etklinlikler
+    {
+       public List<kategoriler> etkList = new List<kategoriler>();
+    }
     public class ExternalLoginListViewModel
     {
         public string ReturnUrl { get; set; }

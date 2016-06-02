@@ -1,0 +1,43 @@
+﻿@model SosyalKaldık.Models.Etklinlikler
+@{
+    ViewBag.Title = "Tüm Etkinlikler";
+}
+
+
+
+<div class="row">
+
+    @foreach (var item in Model.etkList)
+    {
+
+
+        <div class="col-md-6">
+
+            <img src="~/Content/duyuru.png" alt="">
+
+        </div>
+        <div class="col-md-6">
+            <h2>@item.ETK_BASLIK  </h2>
+            <h3>
+                @item.ETK_ACIKLAMA
+            </h3>
+
+
+
+            <h3> Etkinlik Tarih-Saat : @Convert.ToDateTime(@item.ETK_TARIH_SAAT).Date</h3>
+            <h3>İl : @item.ETK_SEHIR</h3>
+            <h3>İlçe : @item.ETK_ILCE</h3>
+            <h3>İlanı Oluşturan : @item.KUL_ADI @item.KUL_SOYADI</h3>
+            <h3>İletişim : @item.KUL_TELEFON </h3>
+            <h3>Email :@item.KUL_EMAIL</h3>
+            <hr class="softly" />
+            <div>
+
+
+
+            </div>
+
+        </div>
+
+    }
+</div>

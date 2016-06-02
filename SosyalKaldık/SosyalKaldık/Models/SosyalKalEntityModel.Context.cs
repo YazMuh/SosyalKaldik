@@ -31,6 +31,7 @@ namespace SosyalKaldık.Models
         public virtual DbSet<KATEGORI> KATEGORIs { get; set; }
         public virtual DbSet<KULLANICI> KULLANICIs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<kategoriler> kategorilers { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

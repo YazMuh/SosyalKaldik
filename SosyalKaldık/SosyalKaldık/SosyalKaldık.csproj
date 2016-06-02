@@ -182,6 +182,9 @@
     <Compile Include="Models\KATEGORI.cs">
       <DependentUpon>SosyalKalEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\kategoriler.cs">
+      <DependentUpon>SosyalKalEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\KULLANICI.cs">
       <DependentUpon>SosyalKalEntityModel.tt</DependentUpon>
     </Compile>
@@ -274,6 +277,7 @@
     <Content Include="Views\Account\EtkinlikEkle.cshtml" />
     <Content Include="Views\Account\EtkinlikGoruntule.cshtml" />
     <Content Include="Views\Account\EtkinlikDuzenle.cshtml" />
+    <Content Include="Views\Home\TumEtkinlikler.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

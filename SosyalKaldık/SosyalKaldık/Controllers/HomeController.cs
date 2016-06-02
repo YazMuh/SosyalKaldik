@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SosyalKaldık.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,9 +11,19 @@ namespace SosyalKaldık.Controllers
     {
         public ActionResult Index()
         {
+           
+            
             return View();
         }
+        public ActionResult TumEtkinlikler()
+        {
+            SosyalKalEntities1 contex = new SosyalKalEntities1();
+            List<kategoriler> etks = contex.kategorilers.ToList();
+            Etklinlikler model = new Etklinlikler();
+            model.etkList = etks;
 
+            return View(model);
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

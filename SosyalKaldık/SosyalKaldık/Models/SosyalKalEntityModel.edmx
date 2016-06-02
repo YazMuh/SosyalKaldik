@@ -46,6 +46,23 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SosyalKal.dbo.kategoriler' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="kategoriler">
+          <Key>
+            <PropertyRef Name="ETK_TARIH_SAAT" />
+          </Key>
+          <Property Name="ETK_BASLIK" Type="varchar" MaxLength="50" />
+          <Property Name="ETK_ACIKLAMA" Type="varchar" MaxLength="400" />
+          <Property Name="ETK_SEHIR" Type="varchar" MaxLength="50" />
+          <Property Name="ETK_TARIH_SAAT" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ETK_ILCE" Type="varchar" MaxLength="50" />
+          <Property Name="KAT_ADI" Type="varchar" MaxLength="50" />
+          <Property Name="KUL_EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="KUL_TELEFON" Type="nchar" MaxLength="10" />
+          <Property Name="KUL_ADI" Type="varchar" MaxLength="50" />
+          <Property Name="KUL_SOYADI" Type="varchar" MaxLength="50" />
+        </EntityType>
         <Association Name="FK_ETKINLIK_KATEGORI">
           <End Role="KATEGORI" Type="Self.KATEGORI" Multiplicity="1" />
           <End Role="ETKINLIK" Type="Self.ETKINLIK" Multiplicity="*" />
@@ -106,6 +123,20 @@
           <EntitySet Name="KATEGORI" EntityType="Self.KATEGORI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KULLANICI" EntityType="Self.KULLANICI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kategoriler" EntityType="Self.kategoriler" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [kategoriler].[ETK_BASLIK] AS [ETK_BASLIK], 
+    [kategoriler].[ETK_ACIKLAMA] AS [ETK_ACIKLAMA], 
+    [kategoriler].[ETK_SEHIR] AS [ETK_SEHIR], 
+    [kategoriler].[ETK_TARIH_SAAT] AS [ETK_TARIH_SAAT], 
+    [kategoriler].[ETK_ILCE] AS [ETK_ILCE], 
+    [kategoriler].[KAT_ADI] AS [KAT_ADI], 
+    [kategoriler].[KUL_EMAIL] AS [KUL_EMAIL], 
+    [kategoriler].[KUL_TELEFON] AS [KUL_TELEFON], 
+    [kategoriler].[KUL_ADI] AS [KUL_ADI], 
+    [kategoriler].[KUL_SOYADI] AS [KUL_SOYADI]
+    FROM [dbo].[kategoriler] AS [kategoriler]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_ETKINLIK_KATEGORI" Association="Self.FK_ETKINLIK_KATEGORI">
             <End Role="KATEGORI" EntitySet="KATEGORI" />
             <End Role="ETKINLIK" EntitySet="ETKINLIK" />
@@ -231,6 +262,7 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="kategorilers" EntityType="SosyalKalModel.kategoriler" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -243,6 +275,21 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="kategoriler">
+          <Key>
+            <PropertyRef Name="ETK_TARIH_SAAT" />
+          </Key>
+          <Property Name="ETK_BASLIK" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ETK_ACIKLAMA" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="ETK_SEHIR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ETK_TARIH_SAAT" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="ETK_ILCE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KAT_ADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KUL_EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KUL_TELEFON" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="KUL_ADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KUL_SOYADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -318,6 +365,22 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SosyalKalModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SosyalKalModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="kategorilers">
+            <EntityTypeMapping TypeName="SosyalKalModel.kategoriler">
+              <MappingFragment StoreEntitySet="kategoriler">
+                <ScalarProperty Name="KUL_SOYADI" ColumnName="KUL_SOYADI" />
+                <ScalarProperty Name="KUL_ADI" ColumnName="KUL_ADI" />
+                <ScalarProperty Name="KUL_TELEFON" ColumnName="KUL_TELEFON" />
+                <ScalarProperty Name="KUL_EMAIL" ColumnName="KUL_EMAIL" />
+                <ScalarProperty Name="KAT_ADI" ColumnName="KAT_ADI" />
+                <ScalarProperty Name="ETK_ILCE" ColumnName="ETK_ILCE" />
+                <ScalarProperty Name="ETK_TARIH_SAAT" ColumnName="ETK_TARIH_SAAT" />
+                <ScalarProperty Name="ETK_SEHIR" ColumnName="ETK_SEHIR" />
+                <ScalarProperty Name="ETK_ACIKLAMA" ColumnName="ETK_ACIKLAMA" />
+                <ScalarProperty Name="ETK_BASLIK" ColumnName="ETK_BASLIK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
