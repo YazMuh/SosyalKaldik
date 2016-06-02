@@ -72,7 +72,57 @@ namespace SosyalKaldık.Controllers
 
             return RedirectToAction("EtkinlikGoruntule");
         }
+        public ActionResult EtkinlikDuzenle(int id)
+        {
+            int b = id;
+            int a = ((KULLANICI)Session["Uye"]).KUL_ID;
+            SosyalKalEntities1 context = new SosyalKalEntities1();
 
+
+            EtkinlikModel model = new EtkinlikModel();
+            model.etkinlikList = context.ETKINLIKs.Where(c => c.KUL_ID == a && c.ETK_ID == b).ToList();
+            List<KATEGORI> kategoriler = context.KATEGORIs.ToList();
+            model.Kategoriler = (from j in kategoriler
+                                 select new SelectListItem
+                                 {
+                                     Text = j.KAT_ADI,
+                                     Value = j.KAT_ID.ToString()
+                                 }).ToList();
+            model.ETK_ACIKLAMA = model.etkinlikList[0].ETK_ACIKLAMA;
+            model.ETK_BASLIK = model.etkinlikList[0].ETK_BASLIK;
+            model.ETK_ILCE = model.etkinlikList[0].ETK_ILCE;
+            model.ETK_SEHIR = model.etkinlikList[0].ETK_SEHIR;
+            model.ETK_TARIH_SAAT = model.etkinlikList[0].ETK_TARIH_SAAT;
+            model.ETK_ID = id;
+            model.KAT_ID = model.etkinlikList[0].KAT_ID;
+            model.KUL_ID = model.etkinlikList[0].KUL_ID;
+            model.Kategoriler.Insert(0, new SelectListItem { Text = "Seçiniz", Value = "" });
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EtkinlikDuzenle(EtkinlikModel model, int id)
+        {
+            int b = id;
+            int a = ((KULLANICI)Session["Uye"]).KUL_ID;
+            SosyalKalEntities1 db = new SosyalKalEntities1();
+
+            var duzenle = db.ETKINLIKs.Where(c => c.KUL_ID == a && c.ETK_ID == b).ToList().FirstOrDefault();
+            duzenle.ETK_BASLIK = model.ETK_BASLIK;
+            duzenle.ETK_ACIKLAMA = model.ETK_ACIKLAMA;
+            duzenle.ETK_TARIH_SAAT = model.ETK_TARIH_SAAT;
+            duzenle.ETK_SEHIR = model.ETK_SEHIR;
+            duzenle.ETK_ILCE = model.ETK_ILCE;
+
+            List<KATEGORI> kategoriler = db.KATEGORIs.ToList();
+
+
+            db.SaveChanges();
+
+
+            return RedirectToAction("EtkinlikGoruntule", "Account");
+        }
 
         //
         // GET: /Account/Login

@@ -273,6 +273,7 @@
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Account\EtkinlikEkle.cshtml" />
     <Content Include="Views\Account\EtkinlikGoruntule.cshtml" />
+    <Content Include="Views\Account\EtkinlikDuzenle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
