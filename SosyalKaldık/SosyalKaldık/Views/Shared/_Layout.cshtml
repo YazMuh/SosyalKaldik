@@ -24,14 +24,14 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Hakkımızda", "About", "Home")</li>
                     <li>@Html.ActionLink("iletişim", "Contact", "Home")</li>
-                    @if (Session["Uye"]!= null)
+                    @if (Session["Uye"] != null)
                     {
                         <li>@Html.ActionLink("Edit", "Edit", "Account")</li>
                         <li>@Html.ActionLink("Etkinlik Ekle", "EtkinlikEkle", "Account")</li>
-                        <li>@Html.ActionLink("Etkinlik Düzenle", "EtkinlikDuzenle", "Account")</li>
+                        <li>@Html.ActionLink("Etkinlik Goruntule", "EtkinlikGoruntule", "Account")</li>
 
                     }
-                    
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

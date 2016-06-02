@@ -45,9 +45,11 @@ namespace SosyalKaldık.Models
         [Display(Name = "Tarih - Saat")]
         public System.DateTime ETK_TARIH_SAAT { get; set; }
         public int KUL_ID { get; set; }
+        public string Tel { get; set; }
         public int KAT_ID { get; set; }
         [Display(Name ="Kategori")]
         public List<SelectListItem> Kategoriler = new List<SelectListItem>();
+        public List<ETKINLIK> etkinlikList = new List<ETKINLIK>();
     }
 
     public class VerifyCodeViewModel

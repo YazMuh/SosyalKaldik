@@ -50,11 +50,33 @@ namespace SosyalKaldık.Controllers
             return View(model);
         }
 
+        public ActionResult EtkinlikGoruntule()
+        {
+            KULLANICI a = ((KULLANICI)(Session["Uye"]));
+            SosyalKalEntities1 contex = new SosyalKalEntities1();
+            EtkinlikModel model = new EtkinlikModel();
+            model.Tel = a.KUL_TELEFON;
+            List<ETKINLIK> list = contex.ETKINLIKs.Where(c => c.KUL_ID == a.KUL_ID).ToList();
+            model.etkinlikList = list;
+            return View(model);
+        }
+        public ActionResult EtkinlikSil(int id)
+        {
 
-     
+            SosyalKalEntities1 contex = new SosyalKalEntities1();
+            int a = ((KULLANICI)Session["Uye"]).KUL_ID;
+            var duzenle = contex.ETKINLIKs.Where(c => c.ETK_ID == id).ToList().FirstOrDefault();
+            contex.ETKINLIKs.Remove(duzenle);
+            contex.SaveChanges();
+
+
+            return RedirectToAction("EtkinlikGoruntule");
+        }
+
+
         //
         // GET: /Account/Login
-        
+
         public ActionResult Login()
         {
            // ViewBag.ReturnUrl = returnUrl;

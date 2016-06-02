@@ -1,0 +1,40 @@
+﻿@model SosyalKaldık.Models.EtkinlikModel
+
+@{
+    ViewBag.Title = "EtkinlikGoruntule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EtkinlikGoruntule</h2>
+
+@foreach (var item in Model.etkinlikList)
+{
+
+    <div class="container">
+        <div class="col-sm-6">
+            <img src="~/Content/duyuru.png" alt="">
+        </div>
+        <div class="col col-sm-6 ">
+            <h2>@item.ETK_BASLIK  </h2>
+            <h3>
+                @item.ETK_ACIKLAMA
+            </h3>
+
+
+
+            <h3> Etkinlik Tarih-Saat : @Convert.ToDateTime(@item.ETK_TARIH_SAAT).Date</h3>
+            <h3>İl : @item.ETK_SEHIR</h3>
+            <h3>İlçe : @item.ETK_ILCE</h3>
+            <h3>İletişim : @Model.Tel </h3>
+            <div>
+
+
+                @Html.ActionLink("Düzenle", "EtkinlikDuzenle", "Account", new { id = item.ETK_ID }, null)
+                @Html.ActionLink("Sil", "EtkinlikSil", "Account", new { id = item.ETK_ID }, null)
+            </div>
+
+        </div>
+    </div>
+
+        <hr class="soften">
+}
